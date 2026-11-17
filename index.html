@@ -1,59 +1,708 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="uz">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="theme-color" content="#f7f5ef">
-	<title>Kitob Olami — kitoblar do‘koni</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-	<style>
-		:root{--ink:#17231f;--muted:#758079;--green:#244d3b;--lime:#d9ed9b;--cream:#f7f5ef;--line:#e7e5dd;--shadow:0 12px 35px #26352b12}
-		*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif}button,input{font:inherit}button{cursor:pointer}.wrap{width:min(1180px,calc(100% - 44px));margin:auto}
-		.topbar{background:var(--green);color:#fff;text-align:center;padding:9px 16px;font-size:12px;letter-spacing:.04em}.topbar b{color:var(--lime)}header{background:#f7f5efed;position:sticky;top:0;z-index:5;border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:28px}.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:21px;white-space:nowrap;letter-spacing:-.7px;color:inherit;text-decoration:none}.brand-mark{background:var(--green);color:var(--lime);width:35px;height:35px;border-radius:11px;display:grid;place-items:center;font-family:Georgia,serif;font-size:22px}.navlinks{display:flex;gap:28px;margin:auto}.navlinks a{color:#56615b;text-decoration:none;font-size:14px}.navlinks a:hover{color:var(--green)}.nav-actions{display:flex;align-items:center;gap:12px}.icon-btn{height:42px;width:44px;border:1px solid var(--line);border-radius:13px;background:transparent;color:var(--ink);font-size:18px;position:relative}.cart-count{position:absolute;top:-6px;right:-5px;background:var(--lime);color:var(--green);width:19px;height:19px;border-radius:50%;font-size:11px;font-weight:700;display:grid;place-items:center}.menu-btn{display:none}
-		.hero{padding:53px 0 42px}.hero-card{min-height:425px;border-radius:28px;background:#e8eddf;display:grid;grid-template-columns:1.04fr .96fr;overflow:hidden;position:relative}.hero-copy{padding:59px 0 48px 66px;position:relative;z-index:1}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--green);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.eyebrow:before{content:'';width:22px;height:1px;background:var(--green)}h1,h2,h3,p{margin-top:0}h1{font:700 clamp(38px,5vw,62px)/1.07 'Playfair Display',serif;letter-spacing:-1.6px;max-width:510px;margin:17px 0 16px}.hero-copy p{color:#667168;line-height:1.7;max-width:420px;font-size:15px;margin-bottom:25px}.primary{border:0;background:var(--green);color:#fff;border-radius:12px;padding:14px 20px;font-weight:600;display:inline-flex;align-items:center;gap:12px;text-decoration:none;transition:.2s}.primary:hover{background:#183a2a;transform:translateY(-2px)}.hero-image{position:relative;min-height:425px}.hero-image img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;object-position:center 55%;mix-blend-mode:multiply;mask-image:linear-gradient(90deg,transparent 0%,#000 26%)}.hero-note{position:absolute;bottom:25px;right:26px;background:#ffffffed;border-radius:14px;padding:12px 16px;font-size:12px;box-shadow:var(--shadow)}.hero-note strong{display:block;font-size:14px;margin-bottom:3px}
-		.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:3px 0 57px}.benefit{display:flex;gap:12px;align-items:center;padding:17px 18px;background:#fff;border:1px solid var(--line);border-radius:15px}.benefit-icon{width:39px;height:39px;border-radius:12px;background:#eff4e5;display:grid;place-items:center;font-size:19px}.benefit strong{display:block;font-size:13px;margin-bottom:3px}.benefit span{font-size:11px;color:var(--muted)}
-		.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:20px}.section-head h2{font:700 32px 'Playfair Display',serif;letter-spacing:-.5px;margin:0 0 6px}.section-head p{margin:0;color:var(--muted);font-size:13px}.catalog{padding:0 0 80px}.filters{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:23px 0 25px}.filter{border:1px solid var(--line);background:transparent;color:#626d65;padding:9px 14px;border-radius:30px;font-size:12px}.filter.active,.filter:hover{background:var(--green);border-color:var(--green);color:white}.search{margin-left:auto;position:relative}.search input{width:220px;border:1px solid var(--line);border-radius:30px;background:#fff;padding:10px 15px 10px 37px;outline:none;font-size:12px}.search input:focus{border-color:var(--green)}.search span{position:absolute;left:14px;top:8px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.book{background:#fff;border:1px solid #eeece5;border-radius:17px;padding:11px;transition:transform .2s,box-shadow .2s;min-width:0}.book:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.cover{height:220px;border-radius:11px;overflow:hidden;position:relative;background:#e8e8e1}.cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}.book:hover .cover img{transform:scale(1.04)}.tag{position:absolute;top:10px;left:10px;background:var(--lime);color:var(--green);padding:6px 9px;border-radius:20px;font-size:10px;font-weight:700}.book-info{padding:14px 3px 4px}.category{color:#899188;font-size:10px;text-transform:uppercase;letter-spacing:.08em}.book h3{font:600 16px 'Playfair Display',serif;margin:7px 0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.author{color:var(--muted);font-size:12px;margin:0 0 14px}.book-bottom{display:flex;justify-content:space-between;align-items:center}.price{font-size:14px;font-weight:700}.add{border:1px solid var(--line);background:#fff;color:var(--green);border-radius:10px;width:35px;height:35px;font-size:19px;transition:.2s}.add:hover{background:var(--green);color:#fff}.empty{grid-column:1/-1;text-align:center;padding:48px;color:var(--muted)}
-		.quote{margin-bottom:76px;background:var(--green);color:white;border-radius:23px;padding:34px 40px;display:flex;justify-content:space-between;align-items:center;gap:30px}.quote blockquote{font:600 24px/1.45 'Playfair Display',serif;margin:0;max-width:700px}.quote small{color:#d9ed9b;white-space:nowrap}.newsletter{margin-bottom:76px;background:#e8eddf;border-radius:22px;padding:36px 40px;display:flex;justify-content:space-between;align-items:center;gap:25px}.newsletter h2{font:700 27px 'Playfair Display',serif;margin:0 0 5px}.newsletter p{color:var(--muted);font-size:13px;margin:0}.signup{display:flex;gap:8px;max-width:410px;width:100%}.signup input{min-width:0;flex:1;padding:13px 15px;border:1px solid #dce1d4;border-radius:11px;background:#fff;outline:none;font-size:13px}.signup button{border:0;border-radius:11px;background:var(--green);color:#fff;padding:0 17px;font-weight:600;font-size:12px}.footer{border-top:1px solid var(--line);padding:25px 0 30px;color:var(--muted);font-size:12px}.footer-inner{display:flex;justify-content:space-between;gap:20px}.footer a{color:var(--green);text-decoration:none}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);padding:12px 18px;border-radius:12px;background:#17231f;color:#fff;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:8}.toast.show{opacity:1;transform:translate(-50%,0)}
-		.cart-dialog{width:min(480px,calc(100% - 30px));max-height:80vh;border:0;border-radius:20px;padding:24px;background:var(--cream);color:var(--ink);box-shadow:0 20px 70px #0003}.cart-dialog::backdrop{background:#17231f88}.cart-head,.cart-row,.cart-total{display:flex;align-items:center;justify-content:space-between;gap:14px}.cart-head{margin-bottom:18px}.cart-head h2{font:700 25px 'Playfair Display',serif;margin:0}.cart-close{border:1px solid var(--line);background:#fff;border-radius:9px;width:36px;height:36px;font-size:20px}.cart-items{max-height:46vh;overflow:auto}.cart-row{padding:13px 0;border-bottom:1px solid var(--line)}.cart-row strong{display:block;font-size:14px}.cart-row small{color:var(--muted)}.cart-controls{display:flex;align-items:center;gap:8px;white-space:nowrap}.cart-controls button{border:1px solid var(--line);background:#fff;border-radius:7px;width:28px;height:28px;color:var(--green)}.cart-total{border-top:1px solid var(--line);padding-top:17px;margin-top:12px;font-weight:700}.cart-empty{color:var(--muted);text-align:center;padding:24px 0}.cart-continue{width:100%;justify-content:center;margin-top:17px}
-		@media(max-width:850px){.navlinks{gap:15px}.hero-copy{padding-left:38px}.grid{grid-template-columns:repeat(3,1fr)}.cover{height:210px}.benefits{gap:9px}.benefit{padding:13px 11px}}
-		@media(max-width:650px){.wrap{width:min(100% - 30px,1180px)}.nav{height:65px}.navlinks{display:none;position:absolute;top:64px;left:0;right:0;background:var(--cream);padding:16px 20px 20px;border-bottom:1px solid var(--line);flex-direction:column;gap:15px}.navlinks.open{display:flex}.menu-btn{display:block}.hero{padding:25px 0 27px}.hero-card{grid-template-columns:1fr;min-height:0}.hero-copy{padding:34px 25px 20px}.hero-copy p{font-size:14px}.hero-image{height:235px;min-height:0}.hero-image img{mask-image:linear-gradient(180deg,transparent 0%,#000 25%)}.hero-note{bottom:15px;right:15px}.benefits{grid-template-columns:1fr;padding-bottom:43px;gap:8px}.benefit{padding:12px 14px}.section-head h2{font-size:27px}.section-head p{font-size:12px}.filters{gap:7px;margin:17px 0 18px}.filter{padding:8px 11px;font-size:11px}.search{margin:4px 0 0;width:100%}.search input{width:100%}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.book{padding:8px;border-radius:14px}.cover{height:clamp(145px,49vw,215px)}.book-info{padding:11px 2px 3px}.book h3{font-size:14px}.author{font-size:11px;margin-bottom:12px}.quote{padding:25px;display:block;margin-bottom:48px}.quote blockquote{font-size:20px}.quote small{display:block;margin-top:14px}.newsletter{padding:25px;display:block;margin-bottom:48px}.newsletter h2{font-size:24px}.signup{margin-top:18px}.footer-inner{display:block;line-height:2}.footer-inner span{display:block}}
-		@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitobxon | Online Book Store</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #f7f5f0;
+            --card: #ffffff;
+            --text: #20231f;
+            --accent: #e66b45;
+            --green: #284b3c;
+            --muted: #777;
+        }
+
+        body.dark {
+            --bg: #151916;
+            --card: #202722;
+            --text: #f1f2eb;
+            --green: #b9d0bf;
+            --muted: #a5afa5;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: Arial, sans-serif;
+            transition: .3s;
+        }
+
+        header {
+            background: var(--card);
+            padding: 20px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 15px #0000000a;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: var(--green);
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: bold;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 10px;
+        }
+
+        .hero {
+            margin: 35px 7%;
+            padding: 60px;
+            border-radius: 25px;
+            background: var(--green);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        .hero button {
+            margin-top: 25px;
+            background: white;
+            color: #20231f;
+            font-weight: bold;
+        }
+
+        .hero-art {
+            font-size: 110px;
+        }
+
+        .section {
+            padding: 30px 7%;
+        }
+
+        .section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .tools {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        input, select {
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: var(--card);
+            color: var(--text);
+        }
+
+        input {
+            flex: 1;
+        }
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .category {
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid #ddd;
+        }
+
+        .category.active {
+            background: var(--green);
+            color: white;
+        }
+
+        .books {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .book {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px #0000000a;
+            transition: .3s;
+        }
+
+        .book:hover {
+            transform: translateY(-6px);
+        }
+
+        .cover {
+            height: 220px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .book h3 {
+            margin-top: 15px;
+            margin-bottom: 7px;
+        }
+
+        .book p {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .book-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .add {
+            background: var(--green);
+            color: white;
+        }
+
+        .like {
+            background: transparent;
+            font-size: 22px;
+            color: var(--muted);
+        }
+
+        .like.active {
+            color: #e4545f;
+        }
+
+        .cart-panel {
+            position: fixed;
+            right: -450px;
+            top: 0;
+            width: 400px;
+            max-width: 100%;
+            height: 100vh;
+            background: var(--card);
+            z-index: 30;
+            padding: 25px;
+            transition: .3s;
+            overflow-y: auto;
+        }
+
+        .cart-panel.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #8884;
+            gap: 10px;
+        }
+
+        .cart-item button {
+            background: #e66b45;
+            color: white;
+        }
+
+        .total {
+            margin-top: 25px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: #0008;
+            z-index: 20;
+        }
+
+        .overlay.show {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--card);
+            color: var(--muted);
+            margin-top: 50px;
+        }
+
+        @media(max-width: 900px) {
+            .books {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+        }
+
+        @media(max-width: 600px) {
+            header {
+                padding: 15px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                margin: 20px 15px;
+                padding: 30px;
+            }
+
+            .hero-art {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px 15px;
+            }
+
+            .books {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .cover {
+                height: 170px;
+                font-size: 18px;
+            }
+
+            .tools {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
+
 <body>
-	<div class="topbar">Bugun buyurtma bering — <b>250 000 so‘mdan yuqori xaridga yetkazib berish bepul</b></div>
-	<header><div class="wrap nav"><a class="brand" href="#bosh-sahifa"><span class="brand-mark">K</span> kitob olami</a><nav class="navlinks" id="navlinks"><a href="#bosh-sahifa">Bosh sahifa</a><a href="#kitoblar">Kitoblar</a><a href="#biz-haqimizda">Biz haqimizda</a></nav><div class="nav-actions"><button class="icon-btn menu-btn" id="menuBtn" aria-label="Menyuni ochish">☰</button><button class="icon-btn" id="cartBtn" aria-label="Savatni ochish" aria-haspopup="dialog">♧<span class="cart-count" id="cartCount">0</span></button></div></div></header>
-	<dialog class="cart-dialog" id="cartDialog" aria-labelledby="cartTitle"><div class="cart-head"><h2 id="cartTitle">Savat</h2><button class="cart-close" id="cartClose" aria-label="Savatni yopish">×</button></div><div class="cart-items" id="cartItems"></div><div class="cart-total"><span>Jami</span><span id="cartTotal">0 so‘m</span></div><button class="primary cart-continue" id="continueShopping">Xaridni davom ettirish</button></dialog>
-	<main>
-		<section class="wrap hero" id="bosh-sahifa"><div class="hero-card"><div class="hero-copy"><span class="eyebrow">Mutolaa zavqi shu yerdan</span><h1>Har bir kitob — yangi bir olam.</h1><p>O‘zingizga mos hikoyani toping. Sevimli kitoblaringizni qulay narxda, eshigingizgacha yetkazamiz.</p><a class="primary" href="#kitoblar">Kitoblarni ko‘rish <span>↗</span></a></div><div class="hero-image"><img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1200&q=85" alt="Kitob javonlari bilan to‘la kutubxona"><div class="hero-note"><strong>Yangi sahifalar sizni kutmoqda</strong>O‘qish uchun ayni fursat</div></div></div></section>
-		<section class="wrap benefits" aria-label="Xizmatlarimiz"><div class="benefit"><span class="benefit-icon">🚚</span><div><strong>Tez yetkazib berish</strong><span>O‘zbekiston bo‘ylab qulay xizmat</span></div></div><div class="benefit"><span class="benefit-icon">✦</span><div><strong>Saralangan kitoblar</strong><span>Har didga mos yangi va sara asarlar</span></div></div><div class="benefit"><span class="benefit-icon">♡</span><div><strong>Mehr bilan tanlangan</strong><span>Kitobsevarlar uchun, kitobsevarlardan</span></div></div></section>
-		<section class="wrap catalog" id="kitoblar"><div class="section-head"><div><span class="eyebrow">Kitob javonimiz</span><h2>Ko‘p tanlanganlar</h2><p>Navbatdagi sevimli kitobingiz shu yerda bo‘lishi mumkin.</p></div></div><div class="filters" id="filters"><button class="filter active" data-category="Barchasi">Barchasi</button><button class="filter" data-category="Badiiy adabiyot">Badiiy adabiyot</button><button class="filter" data-category="Rivojlanish">Rivojlanish</button><button class="filter" data-category="Biznes">Biznes</button><label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Kitob izlash..." aria-label="Kitob izlash"></label></div><div class="grid" id="bookGrid"></div></section>
-		<section class="wrap" id="biz-haqimizda"><div class="quote"><blockquote>“Kitob o‘qish — o‘zgalar fikri bilan tafakkur qilishdir.”</blockquote><small>— Mutolaa haqida</small></div></section>
-		<section class="wrap"><div class="newsletter"><div><h2>Yangiliklardan xabardor bo‘ling</h2><p>Yangi kitoblar va maxsus takliflar haqida birinchilardan bo‘lib biling.</p></div><form class="signup" id="signupForm"><input type="email" placeholder="Email manzilingiz" aria-label="Email manzilingiz" required><button type="submit">Obuna bo‘lish</button></form></div></section>
-	</main>
-	<footer class="footer"><div class="wrap footer-inner"><span>© 2025 Kitob Olami. Mutolaa bilan ulg‘aying.</span><span>Savollar bormi? <a href="mailto:salom@kitobolami.uz">salom@kitobolami.uz</a></span></div></footer><div class="toast" id="toast" role="status" aria-live="polite"></div>
-	<script>
-		const books=[
-			{title:'Kichkina shahzoda',author:'Antuan de Sent-Ekzyuperi',category:'Badiiy adabiyot',price:39000,tag:'Sevimli',image:'photo-1544947950-fa07a98d237f'},
-			{title:'Atom odatlar',author:'Jeyms Klir',category:'Rivojlanish',price:59000,tag:'Bestseller',image:'photo-1543002588-bfa74002ed7e'},
-			{title:'Alkimyogar',author:'Paulo Koelo',category:'Badiiy adabiyot',price:45000,tag:'',image:'photo-1512820790803-83ca734da794'},
-			{title:'Boy ota, kambag‘al ota',author:'Robert Kiyosaki',category:'Biznes',price:62000,tag:'Ommabop',image:'photo-1519682337058-a94d519337bc'},
-			{title:'O‘tkan kunlar',author:'Abdulla Qodiriy',category:'Badiiy adabiyot',price:52000,tag:'O‘zbek adabiyoti',image:'photo-1511100385992-8e1e2ed7bb66'},
-			{title:'Deep Work',author:'Kal Nyuport',category:'Rivojlanish',price:68000,tag:'',image:'photo-1516979187457-637abb4f9353'},
-			{title:'Start with Why',author:'Saymon Sinek',category:'Biznes',price:57000,tag:'Tavsiya',image:'photo-1513001900722-370f803f498d'},
-			{title:'Ikki eshik orasi',author:'O‘tkir Hoshimov',category:'Badiiy adabiyot',price:49000,tag:'O‘zbek adabiyoti',image:'photo-1512820790803-83ca734da794'}
-		];
-		const grid=document.getElementById('bookGrid'),search=document.getElementById('searchInput');let category='Barchasi';const cart=new Map();
-		const money=n=>new Intl.NumberFormat('uz-UZ').format(n)+' so‘m';
-		function render(){const q=search.value.trim().toLocaleLowerCase('uz');const filtered=books.filter(b=>(category==='Barchasi'||b.category===category)&&(!q||(b.title+' '+b.author+' '+b.category).toLocaleLowerCase('uz').includes(q)));grid.innerHTML=filtered.length?filtered.map(b=>`<article class="book"><div class="cover"><img src="https://images.unsplash.com/${b.image}?auto=format&fit=crop&w=700&q=80" alt="${b.title} kitobi" loading="lazy">${b.tag?`<span class="tag">${b.tag}</span>`:''}</div><div class="book-info"><span class="category">${b.category}</span><h3 title="${b.title}">${b.title}</h3><p class="author">${b.author}</p><div class="book-bottom"><span class="price">${money(b.price)}</span><button class="add" data-book-index="${books.indexOf(b)}" aria-label="${b.title} savatga qo‘shish">+</button></div></div></article>`).join(''):'<p class="empty">Bu so‘rov bo‘yicha kitob topilmadi. Boshqa so‘z bilan izlab ko‘ring.</p>';}
-		function renderCart(){const count=[...cart.values()].reduce((sum,item)=>sum+item.quantity,0);document.getElementById('cartCount').textContent=count;document.getElementById('cartItems').innerHTML=count?[...cart.entries()].map(([index,item])=>{const book=books[index];return `<div class="cart-row"><div><strong>${book.title}</strong><small>${money(book.price)} × ${item.quantity}</small></div><div class="cart-controls"><button data-cart-action="decrease" data-book-index="${index}" aria-label="${book.title} sonini kamaytirish">−</button><span>${item.quantity}</span><button data-cart-action="increase" data-book-index="${index}" aria-label="${book.title} sonini oshirish">+</button><button data-cart-action="remove" data-book-index="${index}" aria-label="${book.title}ni savatdan olib tashlash">×</button></div></div>`}).join(''):'<p class="cart-empty">Savatingiz hozircha bo‘sh.</p>';document.getElementById('cartTotal').textContent=money([...cart.entries()].reduce((sum,[index,item])=>sum+books[index].price*item.quantity,0));}
-		document.getElementById('filters').addEventListener('click',e=>{const btn=e.target.closest('.filter');if(!btn)return;document.querySelector('.filter.active').classList.remove('active');btn.classList.add('active');category=btn.dataset.category;render()});search.addEventListener('input',render);
-		let toastTimer;function toast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2200)}
-		grid.addEventListener('click',e=>{const button=e.target.closest('.add');if(!button)return;const index=Number(button.dataset.bookIndex),item=cart.get(index)||{quantity:0};item.quantity++;cart.set(index,item);renderCart();toast('Kitob savatga qo‘shildi')});
-		const cartDialog=document.getElementById('cartDialog');document.getElementById('cartBtn').addEventListener('click',()=>cartDialog.showModal());document.getElementById('cartClose').addEventListener('click',()=>cartDialog.close());document.getElementById('continueShopping').addEventListener('click',()=>cartDialog.close());document.getElementById('cartItems').addEventListener('click',e=>{const button=e.target.closest('[data-cart-action]');if(!button)return;const index=Number(button.dataset.bookIndex),item=cart.get(index);if(!item)return;if(button.dataset.cartAction==='increase')item.quantity++;else if(button.dataset.cartAction==='decrease')item.quantity--;else item.quantity=0;if(item.quantity<=0)cart.delete(index);else cart.set(index,item);renderCart()});
-		document.getElementById('signupForm').addEventListener('submit',e=>{e.preventDefault();toast('Rahmat! Obunangiz qabul qilindi.');e.target.reset()});document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('navlinks').classList.toggle('open'));document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open')));render();renderCart();
-	</script>
+
+<header>
+    <div class="logo">📚 Kitobxon.</div>
+
+    <nav>
+        <a href="#">Bosh sahifa</a>
+        <a href="#books">Kitoblar</a>
+    </nav>
+
+    <div>
+        <button onclick="toggleTheme()">🌙</button>
+        <button onclick="showFavorites()">❤️ <span id="likeCount">0</span></button>
+        <button onclick="openCart()">🛒 <span id="cartCount">0</span></button>
+    </div>
+</header>
+
+<section class="hero">
+    <div>
+        <h1>Har bir kitob — yangi bir hayot.</h1>
+        <p>
+            Sevimli kitoblaringiz, bestsellerlar va
+            foydali bilimlar barchasi bir joyda.
+        </p>
+        <button onclick="location.href='#books'">
+            Kitoblarni ko'rish →
+        </button>
+    </div>
+
+    <div class="hero-art">📖</div>
+</section>
+
+<section class="section" id="books">
+    <h2>Kitoblar olami</h2>
+
+    <div class="tools">
+        <input
+            type="text"
+            id="search"
+            placeholder="Kitob nomini qidiring..."
+            oninput="renderBooks()"
+        >
+
+        <select id="sort" onchange="renderBooks()">
+            <option value="default">Saralash</option>
+            <option value="cheap">Arzonlari</option>
+            <option value="expensive">Qimmatlari</option>
+        </select>
+    </div>
+
+    <div class="categories">
+        <button class="category active" onclick="filterBooks('Barchasi', this)">Barchasi</button>
+        <button class="category" onclick="filterBooks('Badiiy', this)">Badiiy</button>
+        <button class="category" onclick="filterBooks('Biznes', this)">Biznes</button>
+        <button class="category" onclick="filterBooks('Dasturlash', this)">Dasturlash</button>
+        <button class="category" onclick="filterBooks('Tarix', this)">Tarix</button>
+    </div>
+
+    <div class="books" id="bookList"></div>
+</section>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+<div class="cart-panel" id="cart">
+    <div class="cart-header">
+        <h2>🛒 Savatcha</h2>
+        <button onclick="closeCart()">✖</button>
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div class="total">
+        Jami: <span id="total">0</span> so'm
+    </div>
+</div>
+
+<footer>
+    © 2025 Kitobxon. Barcha huquqlar himoyalangan.
+</footer>
+
+<script>
+    const books = [
+        {
+            id: 1,
+            name: "O'tkan kunlar",
+            author: "Abdulla Qodiriy",
+            category: "Badiiy",
+            price: 45000,
+            color: "#853b45"
+        },
+        {
+            id: 2,
+            name: "Atomic Habits",
+            author: "James Clear",
+            category: "Badiiy",
+            price: 89000,
+            color: "#c69a36"
+        },
+        {
+            id: 3,
+            name: "Sapiens",
+            author: "Yuval Noah Harari",
+            category: "Tarix",
+            price: 110000,
+            color: "#315a70"
+        },
+        {
+            id: 4,
+            name: "Clean Code",
+            author: "Robert Martin",
+            category: "Dasturlash",
+            price: 135000,
+            color: "#343f50"
+        },
+        {
+            id: 5,
+            name: "Boy ota, kambag'al ota",
+            author: "Robert Kiyosaki",
+            category: "Biznes",
+            price: 65000,
+            color: "#36715a"
+        },
+        {
+            id: 6,
+            name: "Mehrobdan chayon",
+            author: "Abdulla Qodiriy",
+            category: "Badiiy",
+            price: 42000,
+            color: "#a55f37"
+        },
+        {
+            id: 7,
+            name: "Deep Work",
+            author: "Cal Newport",
+            category: "Biznes",
+            price: 78000,
+            color: "#555b91"
+        },
+        {
+            id: 8,
+            name: "Python Crash Course",
+            author: "Eric Matthes",
+            category: "Dasturlash",
+            price: 125000,
+            color: "#28647c"
+        }
+    ];
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    let currentCategory = "Barchasi";
+    let favoritesOnly = false;
+
+    function saveData() {
+        localStorage.setItem("cart", JSON.stringify(cart));
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        updateCounts();
+    }
+
+    function updateCounts() {
+        document.getElementById("cartCount").textContent =
+            cart.reduce((sum, item) => sum + item.qty, 0);
+
+        document.getElementById("likeCount").textContent =
+            favorites.length;
+    }
+
+    function renderBooks() {
+        const search = document.getElementById("search").value.toLowerCase();
+
+        let result = books.filter(book => {
+            const categoryMatch =
+                currentCategory === "Barchasi" ||
+                book.category === currentCategory;
+
+            const searchMatch =
+                book.name.toLowerCase().includes(search) ||
+                book.author.toLowerCase().includes(search);
+
+            const favoriteMatch =
+                !favoritesOnly || favorites.includes(book.id);
+
+            return categoryMatch && searchMatch && favoriteMatch;
+        });
+
+        const sort = document.getElementById("sort").value;
+
+        if (sort === "cheap") {
+            result.sort((a, b) => a.price - b.price);
+        }
+
+        if (sort === "expensive") {
+            result.sort((a, b) => b.price - a.price);
+        }
+
+        const container = document.getElementById("bookList");
+
+        container.innerHTML = result.map(book => `
+            <div class="book">
+                <div class="cover" style="background:${book.color}">
+                    ${book.name}
+                </div>
+
+                <h3>${book.name}</h3>
+                <p>${book.author}</p>
+                <p>${book.category}</p>
+
+                <div class="book-actions">
+                    <span class="price">
+                        ${book.price.toLocaleString("uz-UZ")} so'm
+                    </span>
+
+                    <button
+                        class="like ${favorites.includes(book.id) ? "active" : ""}"
+                        onclick="toggleLike(${book.id})">
+                        ${favorites.includes(book.id) ? "♥" : "♡"}
+                    </button>
+
+                    <button class="add" onclick="addToCart(${book.id})">
+                        + Savat
+                    </button>
+                </div>
+            </div>
+        `).join("");
+
+        if (result.length === 0) {
+            container.innerHTML = "<p>Kitob topilmadi.</p>";
+        }
+    }
+
+    function filterBooks(category, button) {
+        currentCategory = category;
+        favoritesOnly = false;
+
+        document.querySelectorAll(".category").forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        renderBooks();
+    }
+
+    function toggleLike(id) {
+        if (favorites.includes(id)) {
+            favorites = favorites.filter(item => item !== id);
+        } else {
+            favorites.push(id);
+        }
+
+        saveData();
+        renderBooks();
+    }
+
+    function showFavorites() {
+        favoritesOnly = !favoritesOnly;
+        currentCategory = "Barchasi";
+
+        document.querySelectorAll(".category").forEach(btn => {
+            btn.classList.toggle(
+                "active",
+                btn.textContent === "Barchasi"
+            );
+        });
+
+        renderBooks();
+    }
+
+    function addToCart(id) {
+        const item = cart.find(book => book.id === id);
+
+        if (item) {
+            item.qty++;
+        } else {
+            cart.push({ id: id, qty: 1 });
+        }
+
+        saveData();
+        renderCart();
+    }
+
+    function removeFromCart(id) {
+        cart = cart.filter(item => item.id !== id);
+        saveData();
+        renderCart();
+    }
+
+    function changeQuantity(id, amount) {
+        const item = cart.find(book => book.id === id);
+
+        if (!item) return;
+
+        item.qty += amount;
+
+        if (item.qty <= 0) {
+            removeFromCart(id);
+        } else {
+            saveData();
+            renderCart();
+        }
+    }
+
+    function renderCart() {
+        const container = document.getElementById("cartItems");
+
+        let total = 0;
+
+        container.innerHTML = cart.map(item => {
+            const book = books.find(b => b.id === item.id);
+            const subtotal = book.price * item.qty;
+
+            total += subtotal;
+
+            return `
+                <div class="cart-item">
+                    <div>
+                        <strong>${book.name}</strong>
+                        <p>${book.price.toLocaleString("uz-UZ")} so'm</p>
+
+                        <button onclick="changeQuantity(${book.id}, -1)">−</button>
+                        ${item.qty}
+                        <button onclick="changeQuantity(${book.id}, 1)">+</button>
+                    </div>
+
+                    <button onclick="removeFromCart(${book.id})">
+                        O'chirish
+                    </button>
+                </div>
+            `;
+        }).join("");
+
+        if (cart.length === 0) {
+            container.innerHTML = "<p>Savatcha bo'sh.</p>";
+        }
+
+        document.getElementById("total").textContent =
+            total.toLocaleString("uz-UZ");
+    }
+
+    function openCart() {
+        document.getElementById("cart").classList.add("open");
+        document.getElementById("overlay").classList.add("show");
+    }
+
+    function closeCart() {
+        document.getElementById("cart").classList.remove("open");
+        document.getElementById("overlay").classList.remove("show");
+    }
+
+    function toggleTheme() {
+        document.body.classList.toggle("dark");
+
+        const theme = document.body.classList.contains("dark")
+            ? "dark"
+            : "light";
+
+        localStorage.setItem("theme", theme);
+    }
+
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+    }
+
+    renderBooks();
+    renderCart();
+    updateCounts();
+</script>
+
 </body>
 </html>
